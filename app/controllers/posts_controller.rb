@@ -33,7 +33,7 @@ class PostsController < ApplicationController
 	end	
 
 	def update
-		if current_user == @user
+		if current_user == @user or current_user.admin?
 	    @post = Post.find(params[:id])
 
 	    if @post.update(post_params)
@@ -47,7 +47,7 @@ class PostsController < ApplicationController
   end
 
 	def destroy
-		if current_user == @user
+		if current_user == @user or current_user.admin?
 			Post.destroy(params[:id])
 			redirect_to root_path
 		else
