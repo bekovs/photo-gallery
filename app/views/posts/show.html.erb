@@ -8,7 +8,7 @@
 <h1><%= @post.title %></h1>
 <br /><hr>
 
-<%= image_tag(@post.image.url) %>
+<%= image_tag(@post.image.url(:actual)) %>
 <hr>
 <b>by <%= link_to @post.user.name, users_show_path(@post.user) %></b>
 <b> | Photo rating - <%= average_rating(@post) if @post.comments.presence %></b>
