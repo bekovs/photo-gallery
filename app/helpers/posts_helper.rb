@@ -4,11 +4,8 @@ module PostsHelper
 		post.comments.each do |comment|
 			 array << comment.rating.to_f
 		end
-		if array.nil?
-			return 0
-		else
-		 avg = array.inject(:+) / array.count
-		 return avg
-		end
+
+		avg = array.inject(:+) / array.count
+		return avg
 	end
 end

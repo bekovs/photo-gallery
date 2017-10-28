@@ -24,7 +24,7 @@
 <h2><%= link_to 'Comments', '#', id: 'comments-link' %></h2>
 <div id="comment-section">
   <ol id="comments">
-    <%= render @post.comments %>
+    <%= render @post.comments.order(created_at: :desc) %>
   </ol>
 
   <h3>Add a comment:</h3>

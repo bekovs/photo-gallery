@@ -7,7 +7,7 @@
 	  <h4> <%= current_user.name %></h4> <%= f.hidden_field :user_id, value: current_user.id %>
 	</div><br>
 	<div class="form-group">
-	  <%= f.text_area :body, class: "form-control" %>
+	  <%= f.text_area :body, required: true, class: "form-control" %>
 	</div><br>
 	<div class="form-group">
 	  Your rating: 	<%= f.select :rating, (1..5), required: true %>

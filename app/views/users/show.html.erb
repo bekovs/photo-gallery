@@ -8,7 +8,7 @@
 <br /><hr>
 
 <div class="row">
-	<% @user.posts.each do |post| %>
+	<% @user.posts.order(created_at: :desc).each do |post| %>
 	  <div class="col-sm-4">
 	    <%= link_to image_tag(post.image.url(:medium)), post_path(post) %>
 	    <h3><%= post.title %></h3>
