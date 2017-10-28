@@ -1,0 +1,19 @@
+<% if current_user.nil? %>
+	<b>Please log in to comment</b>
+<% else %>
+
+<%= form_for [@post, @post.comments.build], remote: true do |f| %>
+	<div class="form-group">
+	  <h4> <%= current_user.name %></h4> <%= f.hidden_field :user_id, value: current_user.id %>
+	</div><br>
+	<div class="form-group">
+	  <%= f.text_area :body, class: "form-control" %>
+	</div><br>
+	<div class="form-group">
+	  Your rating: 	<%= f.select :rating, (1..5), required: true %>
+	</div><br>
+
+	<%= f.submit %>
+<% end %>
+
+<% end %>

@@ -11,6 +11,7 @@
 <%= image_tag(@post.image.url) %>
 <hr>
 <b>by <%= link_to @post.user.name, users_show_path(@post.user) %></b>
+<b> | Photo rating - <%= average_rating(@post) if @post.comments.presence %></b>
 <hr>
 <% if current_user.nil? %>
 <% elsif current_user == @post.user or current_user.admin? %>
@@ -19,3 +20,14 @@
 										data: {confirm: 'Do you want to remove this post?'}, class: "btn btn-default" %>
 <% else %>
 <% end %>
+
+<h2><%= link_to 'Comments', '#', id: 'comments-link' %></h2>
+<div id="comment-section">
+  <ol id="comments">
+    <%= render @post.comments %>
+  </ol>
+
+  <h3>Add a comment:</h3>
+  <%= render 'comments/form' %>
+</div>
+<br />
