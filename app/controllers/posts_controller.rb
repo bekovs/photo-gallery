@@ -21,12 +21,12 @@ class PostsController < ApplicationController
 		if user_signed_in?
 	    @post = Post.new(post_params)
 	    if @post.save
-	        flash[:success] = "Post created"  
+	      flash[:success] = "Post created"  
+	      redirect_to root_path
 	    else
-	        flash[:error] = "Error : Invalid post description"  
-	        render 'new'
+	      flash[:error] = "Error : Invalid post title"  
+	      render "new"
 	    end
-	    redirect_to root_path
 		else
 			redirect_to root_path
 		end
