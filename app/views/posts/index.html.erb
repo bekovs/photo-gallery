@@ -1,2 +1,14 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div class="jumbotron text-center">
+  <h1>Welcome to Photo Gallery</h1>
+  <p>Best photo's in 1 site</p> 
+</div>
+
+<div class="row">
+	<% @posts.each do |post| %>
+	  <div class="col-sm-4">
+	    <%= link_to image_tag(post.image.url(:medium)), post_path(post) %>
+	    <h3><%= post.title %></h3>
+	    <p>by <%= link_to post.user.name, users_show_path(post.user) %></p>
+	  </div>
+  <% end %>
+</div>

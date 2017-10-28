@@ -1,0 +1,35 @@
+<%= form_for @post  do |f| %>
+
+
+<% if @post.errors.any? %>
+<div class="errors">
+	Total errors: <%= @post.errors.count %>
+	<ul>
+		<% @post.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+
+
+<div class="form-group">
+	<%= f.label :title %><br/>
+	<%= f.text_field :title, required: true, autofocus: true, class: "form-control" %>
+</div>
+
+<div class="form-group">
+	<%= f.label :image %>
+	<%= f.file_field :image, required: true, accept: 'image/png,image/jpg,image/jpeg' %>
+</div>
+
+<div class="form-group">
+	<%= f.hidden_field :user_id, value: current_user.id %>
+</div>
+
+<div class="actions">
+	<%= f.submit class: "btn btn-default" %>
+</div>
+
+
+<% end %>

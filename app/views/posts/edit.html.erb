@@ -1,0 +1,11 @@
+<div class="col-sm-4">
+<p><%= link_to "Home", root_path %> 
+	<% if user_signed_in? %>
+	| <%= link_to "Profile", users_show_path(current_user) %>
+	<% else %>
+	<% end %>
+</p>
+<h1>Edit Photo</h1>
+
+<%= render "form" %>
+</div>

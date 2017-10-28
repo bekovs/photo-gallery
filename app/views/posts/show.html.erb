@@ -1,2 +1,21 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<p><%= link_to "Home", root_path %> 
+	<% if user_signed_in? %>
+	| <%= link_to "My Profile", users_show_path(current_user) %>
+	<% else %>
+	<% end %>
+</p>
+
+<h1><%= @post.title %></h1>
+<br /><hr>
+
+<%= image_tag(@post.image.url) %>
+<hr>
+<b>by <%= link_to @post.user.name, users_show_path(@post.user) %></b>
+<hr>
+<% if current_user.nil? %>
+<% elsif current_user == @post.user or current_user.admin? %>
+	<%= link_to "Edit post", edit_post_path(@post), class: "btn btn-default" %>
+	<%= link_to "Delete post", post_path(@post), method: :delete,
+										data: {confirm: 'Do you want to remove this post?'}, class: "btn btn-default" %>
+<% else %>
+<% end %>
